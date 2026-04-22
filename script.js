@@ -12,7 +12,7 @@ const textArray = [
     'I Love You Jann',
     'You are my everything',
     'Always yours',
-    'Infinity Love ❤️',
+    'MohoNasrullah❤️',
     'My Queen 👑',
     'I need you forever',
     'Stay with me',
