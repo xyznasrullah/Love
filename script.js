@@ -2,6 +2,7 @@ const welcomeBtn = document.getElementById('welcomeBtn');
 const mainContainer = document.getElementById('mainContainer');
 const loveStage = document.getElementById('loveStage');
 
+// তোমার দেওয়া লাইনসহ আরও রোমান্টিক লাইন যোগ করা হয়েছে
 const textArray = [
     'I Love You Mohona', 
     'Marzia Mohona', 
@@ -9,16 +10,22 @@ const textArray = [
     'My Lovee', 
     'I wanna be yours🤍', 
     'I Love You Jann',
-    '❤️', '💖', '💍', '✨'
+    'You are my everything',
+    'Always yours',
+    'Infinity Love ❤️',
+    'My Queen 👑',
+    'I need you forever',
+    'Stay with me',
+    '❤️', '💖', '✨'
 ];
 
 welcomeBtn.addEventListener('click', () => {
-    mainContainer.style.transition = '2s';
+    mainContainer.style.transition = '1s';
     mainContainer.style.opacity = '0';
     setTimeout(() => {
         mainContainer.style.display = 'none';
-        startGorgeousRain();
-    }, 1500);
+        setInterval(createFallingItem, 300); // রেইন শুরু
+    }, 1000);
 });
 
 function createFallingItem() {
@@ -26,23 +33,14 @@ function createFallingItem() {
     item.className = 'falling-item';
     item.innerText = textArray[Math.floor(Math.random() * textArray.length)];
     
-    // র্যান্ডম সেটিংস
-    const startX = Math.random() * 100;
-    const duration = Math.random() * 5 + 4; // ৪ থেকে ৯ সেকেন্ড
-    const fontSize = Math.random() * 1.5 + 1; // বড় ছোট মিক্স
+    const startX = Math.random() * 90; // ডানে বামে পজিশন
+    const duration = Math.random() * 4 + 4; // পড়ার গতি
     
     item.style.left = startX + 'vw';
-    item.style.fontSize = fontSize + 'rem';
+    item.style.fontSize = '1.4rem'; // মিডিয়াম মোটা ফন্ট সাইজ
     item.style.animationDuration = duration + 's';
-    item.style.opacity = Math.random();
     
     loveStage.appendChild(item);
 
-    // এনিমেশন শেষ হলে ডিলিট
     setTimeout(() => { item.remove(); }, duration * 1000);
-}
-
-function startGorgeousRain() {
-    // প্রতি ২০০ মিলিসেকেন্ডে একটি করে টেক্সট পড়বে
-    setInterval(createFallingItem, 250);
 }
