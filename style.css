@@ -3,57 +3,74 @@
     --glow: #ff0055;
 }
 
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: #000;
+}
+
+body {
+    background-color: #000;
     overflow: hidden;
     height: 100vh;
+    width: 100vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Avenir ফন্ট পিসিতে থাকলে পাবে, না থাকলে Montserrat কাজ করবে */
+    justify-content: center; /* হরাইজন্টাল সেন্টার */
+    align-items: center;     /* ভার্টিক্যাল সেন্টার */
     font-family: 'Avenir', 'Montserrat', sans-serif;
 }
 
-/* ব্যাকগ্রাউন্ডে তোমাদের ছবি */
+/* ব্যাকগ্রাউন্ড ছবি সেটিংস */
 .bg-image {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('our-pic.jpg'); /* তোমার ছবির নাম 'our-pic.jpg' রাখবে */
+    background-image: url('our-pic.jpg'); 
     background-size: cover;
     background-position: center;
-    filter: blur(5px); /* ছবি ঝাপসা করার জন্য */
+    filter: blur(8px); 
     z-index: -2;
-    opacity: 0.6; /* ছবি হালকা করার জন্য */
+    opacity: 0.5;
 }
 
 .overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     z-index: -1;
 }
 
+/* মেইন কন্টেইনার ফিক্স */
+.container {
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    padding: 0 20px; /* ফোনের দুই পাশে গ্যাপ রাখার জন্য */
+}
+
 .welcome-msg {
-    font-size: 3rem;
+    font-size: 2rem; /* ফোনে যেন বেশি বড় না হয়ে যায় */
     color: #fff;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-shadow: 0 0 15px var(--glow);
     cursor: pointer;
     animation: pulse 2s infinite;
 }
 
-/* লেখাগুলো সোজা হয়ে পড়ার স্টাইল */
+/* পিসির জন্য বড় ফন্ট */
+@media (min-width: 768px) {
+    .welcome-msg {
+        font-size: 3.5rem;
+    }
+}
+
 .falling-item {
     position: absolute;
     color: #fff;
     text-shadow: 0 0 10px var(--glow), 0 0 20px var(--glow);
-    font-weight: 700; /* লেখা একটু মোটা বা মিডিয়াম করার জন্য */
+    font-weight: 700;
     white-space: nowrap;
     pointer-events: none;
-    /* এবার শুধু সোজা ওপর থেকে নিচে পড়বে */
     animation: fallStraight linear forwards;
 }
 
