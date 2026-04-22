@@ -7,7 +7,7 @@ const bgMusic = document.getElementById('myAudio'); // মিউজিক ধর
 const textArray = [
     'I Love You Mohona', 
     'Marzia Mohona', 
-     'Amr GulumuluMona', 
+     'Amr Gulumulu Mona', 
      'Amr Monaa', 
     'Juthika Jikra Zarin', 
     'Durasa Cura',
