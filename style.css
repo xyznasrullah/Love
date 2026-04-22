@@ -1,48 +1,70 @@
-const welcomeBtn = document.getElementById('welcomeBtn');
-const mainContainer = document.getElementById('mainContainer');
-const loveStage = document.getElementById('loveStage');
-
-const textArray = [
-    'I Love You Mohona', 
-    'Marzia Mohona', 
-    'Juthika Jikra Zarin', 
-    'My Lovee', 
-    'I wanna be yours🤍', 
-    'I Love You Jann',
-    '❤️', '💖', '💍', '✨'
-];
-
-welcomeBtn.addEventListener('click', () => {
-    mainContainer.style.transition = '2s';
-    mainContainer.style.opacity = '0';
-    setTimeout(() => {
-        mainContainer.style.display = 'none';
-        startGorgeousRain();
-    }, 1500);
-});
-
-function createFallingItem() {
-    const item = document.createElement('div');
-    item.className = 'falling-item';
-    item.innerText = textArray[Math.floor(Math.random() * textArray.length)];
-    
-    // র্যান্ডম সেটিংস
-    const startX = Math.random() * 100;
-    const duration = Math.random() * 5 + 4; // ৪ থেকে ৯ সেকেন্ড
-    const fontSize = Math.random() * 1.5 + 1; // বড় ছোট মিক্স
-    
-    item.style.left = startX + 'vw';
-    item.style.fontSize = fontSize + 'rem';
-    item.style.animationDuration = duration + 's';
-    item.style.opacity = Math.random();
-    
-    loveStage.appendChild(item);
-
-    // এনিমেশন শেষ হলে ডিলিট
-    setTimeout(() => { item.remove(); }, duration * 1000);
+:root {
+    --primary-pink: #ff0077;
+    --glow-pink: #ff00ff;
 }
 
-function startGorgeousRain() {
-    // প্রতি ২০০ মিলিসেকেন্ডে একটি করে টেক্সট পড়বে
-    setInterval(createFallingItem, 250);
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle, #1a000a 0%, #000000 100%);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Dancing Script', cursive;
+}
+
+/* ব্যাকগ্রাউন্ড স্টার্স */
+.stars {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.welcome-msg {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 20px var(--primary-pink), 0 0 40px var(--glow-pink);
+    animation: pulse 2s infinite;
+}
+
+.hint { color: #fff; opacity: 0.6; margin-top: 10px; font-family: sans-serif; letter-spacing: 2px; }
+
+/* লাভ রেইন স্টাইল */
+.love-stage {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.falling-item {
+    position: absolute;
+    color: var(--primary-pink);
+    text-shadow: 0 0 15px var(--glow-pink);
+    font-weight: bold;
+    white-space: nowrap;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); text-shadow: 0 0 20px var(--primary-pink); }
+    50% { transform: scale(1.05); text-shadow: 0 0 40px var(--glow-pink); }
 }
