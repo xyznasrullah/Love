@@ -8,6 +8,7 @@ const textArray = [
     'I Love You Mohona', 
     'Marzia Mohona', 
     'Juthika Jikra Zarin', 
+    'Durasa Cura',
     'My Lovee', 
     'I wanna be yours🤍', 
     'I Love You Jann',
