@@ -1,8 +1,9 @@
 const welcomeBtn = document.getElementById('welcomeBtn');
 const mainContainer = document.getElementById('mainContainer');
 const loveStage = document.getElementById('loveStage');
+const bgMusic = document.getElementById('myAudio'); // মিউজিক ধরার জন্য নতুন লাইন
 
-// তোমার দেওয়া লাইনসহ আরও রোমান্টিক লাইন যোগ করা হয়েছে
+// তোমার দেওয়া রোমান্টিক লাইনগুলো
 const textArray = [
     'I Love You Mohona', 
     'Marzia Mohona', 
@@ -20,6 +21,11 @@ const textArray = [
 ];
 
 welcomeBtn.addEventListener('click', () => {
+    // এখানে মিউজিক প্লে হওয়ার কোডটি যোগ করা হলো
+    if (bgMusic) {
+        bgMusic.play().catch(error => console.log("Music play blocked:", error));
+    }
+
     mainContainer.style.transition = '1s';
     mainContainer.style.opacity = '0';
     setTimeout(() => {
@@ -34,10 +40,10 @@ function createFallingItem() {
     item.innerText = textArray[Math.floor(Math.random() * textArray.length)];
     
     const startX = Math.random() * 90; // ডানে বামে পজিশন
-    const duration = Math.random() * 4 + 4; // পড়ার গতি
+    const duration = Math.random() * 4 + 4; // পড়ার গতি
     
     item.style.left = startX + 'vw';
-    item.style.fontSize = '1.4rem'; // মিডিয়াম মোটা ফন্ট সাইজ
+    item.style.fontSize = '1.4rem'; // মিডিয়াম মোটা ফন্ট সাইজ
     item.style.animationDuration = duration + 's';
     
     loveStage.appendChild(item);
