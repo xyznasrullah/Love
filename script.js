@@ -16,7 +16,7 @@ const textArray = [
     'MohoNasrullah❤️',
     'My Queen 👑',
     'I need you forever',
-    'Stay with me',
+    'MohoNasrullah—a bond that will last until the very end',
     '❤️', '💖', '✨'
 ];
 
