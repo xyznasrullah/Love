@@ -1,1 +1,93 @@
+/* ১. গ্লোবাল সেটিংস */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    background-color: #000; /* ব্যাকগ্রাউন্ড একদম কালো থাকবে */
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden; /* ডানে-বামে যেন স্ক্রল না হয় */
+    width: 100%;
+    height: 100vh;
+}
+
+/* ২. ওয়েলকাম স্ক্রিন স্টাইল */
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    cursor: pointer;
+    text-align: center;
+}
+
+.welcome-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: #00f2ff; /* নিয়ন সায়ান কালার */
+    text-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff;
+    animation: welcomeGlitch 1.5s infinite;
+}
+
+.tap-text {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+/* ৩. রেইন কন্টেইনার */
+.love-rain-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+/* ৪. ওপর থেকে পড়া লেখাগুলো */
+.falling-text {
+    position: absolute;
+    color: #ff0055; /* ছবির মতো গোলাপি কালার */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    white-space: nowrap;
+    text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055;
+    animation: fallAnimation 8s linear infinite;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* ৫. লাভ ইমোজি */
+.falling-heart {
+    position: absolute;
+    color: #ff0000; /* লাল কালার */
+    font-size: 1.5rem;
+    animation: fallAnimation 6s linear infinite;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* ৬. এনিমেশন সেটিংস */
+@keyframes fallAnimation {
+    0% {
+        top: -100px; /* স্ক্রিনের ওপর থেকে শুরু */
+        opacity: 1;
+    }
+    100% {
+        top: 110vh; /* স্ক্রিনের নিচে চলে যাবে */
+        opacity: 0.1; /* নিচে গিয়ে হালকা হয়ে যাবে */
+    }
+}
+
+@keyframes welcomeGlitch {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
