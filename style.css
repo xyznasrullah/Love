@@ -1,93 +1,70 @@
-/* ১. গ্লোবাল সেটিংস */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --primary-pink: #ff0077;
+    --glow-pink: #ff00ff;
 }
 
 body {
-    background-color: #000; /* ব্যাকগ্রাউন্ড একদম কালো থাকবে */
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden; /* ডানে-বামে যেন স্ক্রল না হয় */
-    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle, #1a000a 0%, #000000 100%);
+    overflow: hidden;
     height: 100vh;
-}
-
-/* ২. ওয়েলকাম স্ক্রিন স্টাইল */
-.welcome-section {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100vh;
-    cursor: pointer;
+    font-family: 'Dancing Script', cursive;
+}
+
+/* ব্যাকগ্রাউন্ড স্টার্স */
+.stars {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+.container {
     text-align: center;
+    z-index: 10;
+    cursor: pointer;
 }
 
-.welcome-text {
+.welcome-msg {
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem;
-    color: #00f2ff; /* নিয়ন সায়ান কালার */
-    text-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff;
-    animation: welcomeGlitch 1.5s infinite;
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 20px var(--primary-pink), 0 0 40px var(--glow-pink);
+    animation: pulse 2s infinite;
 }
 
-.tap-text {
-    font-size: 0.9rem;
-    color: #e0e0e0;
-    margin-top: 10px;
-    opacity: 0.7;
+.hint { color: #fff; opacity: 0.6; margin-top: 10px; font-family: sans-serif; letter-spacing: 2px; }
+
+/* লাভ রেইন স্টাইল */
+.love-stage {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 5;
 }
 
-/* ৩. রেইন কন্টেইনার */
-.love-rain-container {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    top: 0;
-    left: 0;
-}
-
-/* ৪. ওপর থেকে পড়া লেখাগুলো */
-.falling-text {
+.falling-item {
     position: absolute;
-    color: #ff0055; /* ছবির মতো গোলাপি কালার */
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.2rem;
+    color: var(--primary-pink);
+    text-shadow: 0 0 15px var(--glow-pink);
     font-weight: bold;
     white-space: nowrap;
-    text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055;
-    animation: fallAnimation 8s linear infinite;
-    pointer-events: none;
-    opacity: 0.8;
+    animation: fall linear forwards;
 }
 
-/* ৫. লাভ ইমোজি */
-.falling-heart {
-    position: absolute;
-    color: #ff0000; /* লাল কালার */
-    font-size: 1.5rem;
-    animation: fallAnimation 6s linear infinite;
-    pointer-events: none;
-    opacity: 0.9;
+@keyframes fall {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
-/* ৬. এনিমেশন সেটিংস */
-@keyframes fallAnimation {
-    0% {
-        top: -100px; /* স্ক্রিনের ওপর থেকে শুরু */
-        opacity: 1;
-    }
-    100% {
-        top: 110vh; /* স্ক্রিনের নিচে চলে যাবে */
-        opacity: 0.1; /* নিচে গিয়ে হালকা হয়ে যাবে */
-    }
-}
-
-@keyframes welcomeGlitch {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
+@keyframes pulse {
+    0%, 100% { transform: scale(1); text-shadow: 0 0 20px var(--primary-pink); }
+    50% { transform: scale(1.05); text-shadow: 0 0 40px var(--glow-pink); }
 }
